@@ -5,6 +5,7 @@ const source = require('vinyl-source-stream')
 const buffer = require('vinyl-buffer')
 const browserify = require('browserify')
 const path = require('path')
+const runSequence = require('run-sequence')
 const i18nTagSchema = require('i18n-tag-schema').default
 
 gulp.task('generate-translation-schema', (cb) => {
@@ -35,4 +36,8 @@ gulp.task('build-release-de', () => {
     .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./dist'))
+})
+
+gulp.task('default', function() {
+  runSequence('generate-translation-schema', 'build-release-de');
 })
