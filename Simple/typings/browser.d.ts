@@ -5,5 +5,6 @@
 /// <reference path="browser/ambient/jquery/index.d.ts" />
 /// <reference path="browser/ambient/lodash/index.d.ts" />
 /// <reference path="browser/ambient/rimraf/index.d.ts" />
+/// <reference path="browser/ambient/run-sequence/index.d.ts" />
 /// <reference path="browser/ambient/vinyl-buffer/index.d.ts" />
 /// <reference path="browser/ambient/vinyl-source-stream/index.d.ts" />
