@@ -14,16 +14,13 @@
     "url": "https://github.com/skolmer/i18n-tag-examples.git"
   },
   "keywords": [
-    "react",
-    "reactjs",
-    "boilerplate",
-    "hot",
-    "reload",
-    "hmr",
-    "live",
-    "edit",
-    "webpack",
-    "babel"
+    "i18n",
+    "i18n-tag",
+    "i18n-tag-schema",
+    "es2015",
+    "babel",
+    "jquery",
+    "gulp"
   ],
   "author": "Steffen Kolmer <steffen@kolmer.net> (http://github.com/skolmer)",
   "license": "CC0-1.0",
@@ -34,7 +31,7 @@
   "devDependencies": {
     "babel-core": "^6.9.0",
     "babel-eslint": "^6.0.4",
-    "babel-plugin-i18n-tag-translate": "^0.4.2",
+    "babel-plugin-i18n-tag-translate": "^0.5.0",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-stage-0": "^6.5.0",
     "babelify": "^7.3.0",
@@ -49,7 +46,7 @@
     "gulp": "^3.9.1",
     "gulp-connect": "^4.0.0",
     "gulp-sourcemaps": "^1.6.0",
-    "i18n-tag-schema": "^0.4.2",
+    "i18n-tag-schema": "^0.5.0",
     "rimraf": "^2.5.2",
     "run-sequence": "^1.2.1",
     "vinyl-buffer": "^1.0.0",
@@ -57,11 +54,10 @@
   },
   "dependencies": {
     "lodash": "^4.12.0",
-    "jquery": "^2.2.4"
+    "jquery": "^2.2.4",
+    "es2015-i18n-tag": "^0.6.1"
   },
   "config": {
-    "host": "localhost",
-    "port": 3000,
     "ghooks": {
       "pre-commit": "npm run lint"
     }
