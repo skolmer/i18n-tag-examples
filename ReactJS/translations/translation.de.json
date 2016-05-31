@@ -1,0 +1,4 @@
+{
+    "$schema": "./translation.schema.json",
+    "Counter (${0}): ${1}": "Zähler (${0}): ${1}"
+}

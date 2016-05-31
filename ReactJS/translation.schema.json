@@ -1,0 +1,9 @@
+{
+	"type": "object",
+	"properties": {
+		"Counter (${0}): ${1}": {
+			"type": "string"
+		}
+	},
+	"additionalProperties": false
+}

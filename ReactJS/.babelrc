@@ -1,0 +1,27 @@
+{
+    "presets": [
+        "es2015",
+        "stage-0",
+        "react"
+    ],
+    "plugins": [
+        [
+            "i18n-tag-translate",
+            {
+                "globalImport": true // Adds import i18n, { i18nConfig } from "es2015-i18n-tag"; to the output
+            }
+        ]
+    ],
+    "env": {
+        "development": {
+            "plugins": [
+                "react-hot-loader/babel"
+            ]
+        },
+        "production": {
+            "presets": [
+                "react-optimize"
+            ]
+        }
+    }
+}
