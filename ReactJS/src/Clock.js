@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import DateLabel from './DateLabel'
 
 class Clock extends Component {
     constructor(props) {
@@ -20,10 +19,10 @@ class Clock extends Component {
 
     render() {
         return (
-            <div>    
-            <DateLabel date={this.state.date} />    
+            <div>
+                <p>{ i18n`Date: ${this.state.date}:t(D)` }</p>
                 <h1>
-                     { i18n`Time: ${this.state.date}:t(T)` }
+                    { i18n`Time: ${this.state.date}:t(T)` }
                 </h1>
             </div>
         )

@@ -1,6 +1,9 @@
 {
 	"type": "object",
 	"properties": {
+		"Loading...": {
+			"type": "string"
+		},
 		"Time: ${0}": {
 			"type": "string"
 		},
