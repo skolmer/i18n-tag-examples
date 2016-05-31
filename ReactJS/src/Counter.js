@@ -4,7 +4,7 @@ import _ from 'lodash'
 class Counter extends Component {
     constructor(props) {
         super(props)
-        this.state = { counter: 0, locale: 'en-US' }
+        this.state = { counter: 0 }
         this.interval = setInterval(() => this.tick(), 1000)
     }
 
