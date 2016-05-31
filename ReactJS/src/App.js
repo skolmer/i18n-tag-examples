@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import 'whatwg-fetch'
-import { NICE, SUPER_NICE } from './colors'
-import Counter from './Counter'
+import Clock from './Clock'
 
 class App extends Component {
     constructor(props) {
         super(props)
-        this.state = { locale: 'en-US' }
+        this.state = { locale: 'en-US', date: new Date() }
         this.handleChange = this.handleChange.bind(this)
     }
 
@@ -21,7 +20,7 @@ class App extends Component {
         } else {
             i18nConfig({ locales: 'en-US', translations: [] })
         }
-        this.setState({ locale });
+        this.setState({ locale, date: new Date() });
     }
 
     render() {
@@ -30,9 +29,8 @@ class App extends Component {
                 <select value={this.state.locale} onChange={this.handleChange}>
                     <option value="en-US">EN</option>
                     <option value="de-DE">DE</option>
-                </select>
-                <Counter increment={1} color={NICE} />
-                <Counter increment={5} color={SUPER_NICE} />
+                </select>                
+                <Clock />
             </div>
         )
     }

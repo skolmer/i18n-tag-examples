@@ -1,7 +1,10 @@
 {
 	"type": "object",
 	"properties": {
-		"Counter (${0}): ${1}": {
+		"Time: ${0}": {
+			"type": "string"
+		},
+		"Date: ${0}": {
 			"type": "string"
 		}
 	},

@@ -15,7 +15,6 @@
         "eslint:recommended",
         "plugin:import/errors",
         "plugin:import/warnings",
-        "plugin:lodash/recommended",
         "plugin:react/recommended"
     ],
     "globals": {
