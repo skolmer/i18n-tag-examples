@@ -22,6 +22,19 @@
         "production": {
             "presets": [
                 "react-optimize"
+            ],
+            "plugins": [
+                [
+                    "i18n-tag-translate",
+                    {
+                        "translation": "./translations/translation.de.json", // These translations will be baked into the release build
+                        "groupDir": "./src", // Adds __translationGroup const to each module
+                        "globalImport": true, // Adds import i18n, { i18nConfig } from "es2015-i18n-tag"; to the output
+                        "config": {
+                            "locales": "de-DE" // Sets default locale for release build
+                        }
+                    }
+                ]
             ]
         }
     }

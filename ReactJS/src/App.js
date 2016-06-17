@@ -32,13 +32,19 @@ class App extends Component {
          * Translation groups are optional. If "groupDir" is not set __translationGroup will be undefined!
          */
         i18nConfig({ group: __translationGroup })
-        return (
-            <div lang={this.state.locale}>
+        let selector = (__DEV__) ? (
+            <div>
                 <select value={this.state.locale} onChange={this.handleChange}>
                     <option value="en-US">EN</option>
                     <option value="de-DE">DE</option>
                     <option value="es-ES">ES</option>
-                </select>{this.state.loading ? i18n`Loading...` : false}                
+                </select>{this.state.loading ? i18n`Loading...` : false}
+            </div>
+        ) : null
+
+        return (
+            <div lang={this.state.locale}>
+                { selector }            
                 <Clock />
             </div>
         )
