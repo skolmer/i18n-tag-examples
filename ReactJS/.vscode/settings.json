@@ -1,10 +1,9 @@
-// Place your settings in this file to overwrite default and user settings.
 {
 	"editor.formatOnType": true,
 	"eslint.enable": true,
 	"files.associations": {
-		"**/src/**/*.js": "javascriptreact",
-		"**/node_modules/**/*.js": "javascript",
+		"**/src*.js": "javascriptreact",
+		"**/node_modules*.js": "javascript",
 		".babelrc": "json",
 		".eslintignore": "gitignore"
 	},
@@ -17,12 +16,6 @@
 	"html.format.extraLiners": "!",
 	"html.format.indentInnerHtml": true,
 	"json.schemas": [
-		{
-            "fileMatch": [
-                "/translations/*.json"
-            ],
-            "url": "./translation.schema.json"
-        },
 		{
 			"fileMatch": [
 				"/package.json"
@@ -45,7 +38,7 @@
 							"ghooks": {
 								"type": "object",
 								"description": "Git hook configurations",
-								"properties": {									
+								"properties": {
 									"applypatch-msg": {
 										"type": "string"
 									},
@@ -103,6 +96,12 @@
 					}
 				}
 			}
+		},
+		{
+			"fileMatch": [
+				"/translations/**/*.json"
+			],
+			"url": "./translation.schema.json"
 		}
 	],
 	"search.exclude": {
@@ -110,6 +109,6 @@
 		"typings/": true
 	},
 	"i18nTag.src": "./src",
-    "i18nTag.schema": "./translation.schema.json",
-    "i18nTag.filter": ".jsx?"
+	"i18nTag.schema": "./translation.schema.json",
+	"i18nTag.filter": "\\.jsx?"
 }

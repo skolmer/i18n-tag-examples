@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const pkg = require('./package.json');
 const _ = require('lodash');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -38,7 +39,10 @@ module.exports = {
             template: 'index.html', // Load a custom template 
             inject: 'body', // Inject all scripts into the body 
             hash: true
-        })
+        }),
+        new CopyWebpackPlugin([
+            { from: 'translations', to: 'translations' }
+        ])
     ],
     module: {
         loaders: [{
