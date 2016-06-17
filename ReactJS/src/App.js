@@ -26,13 +26,19 @@ class App extends Component {
     }
 
     render() {
+        /**
+         * This variable can be used to group your translations by filename e.g. "Clock.js"
+         * __translationGroup const will be injected by babel into each module and contains the filepath of the module relative to "groupDir" in ".babelrc"
+         * Translation groups are optional. If "groupDir" is not set __translationGroup will be undefined!
+         */
+        i18nConfig({ group: __translationGroup })
         return (
             <div lang={this.state.locale}>
                 <select value={this.state.locale} onChange={this.handleChange}>
                     <option value="en-US">EN</option>
                     <option value="de-DE">DE</option>
                     <option value="es-ES">ES</option>
-                </select>{this.state.loading ? 'Loading...' : false}                
+                </select>{this.state.loading ? i18n`Loading...` : false}                
                 <Clock />
             </div>
         )
