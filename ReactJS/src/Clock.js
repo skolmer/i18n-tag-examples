@@ -21,6 +21,7 @@ class Clock extends Component {
         /**
          * This variable can be used to group your translations by filename e.g. "Clock.js"
          * __translationGroup const will be injected by babel into each module and contains the filepath of the module relative to "groupDir" in ".babelrc"
+         * Translation groups are optional. If "groupDir" is not set __translationGroup will be undefined!
          */
         i18nConfig({ group: __translationGroup })
         return (
