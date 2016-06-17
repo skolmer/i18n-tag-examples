@@ -1,5 +1,7 @@
 {
-    "$schema": "./translation.schema.json",
-    "Date: ${0}": "Datum: ${0}",
-    "Time: ${0}": "Zeit: ${0}"
+    "$schema": "../translation.schema.json",
+    "Clock.js": {
+        "Date: ${0}": "Datum: ${0}",
+        "Time: ${0}": "Zeit: ${0}"
+    }
 }

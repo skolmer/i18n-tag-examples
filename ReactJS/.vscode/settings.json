@@ -99,7 +99,7 @@
 		},
 		{
 			"fileMatch": [
-				"/translations/**/*.json"
+				"/translations/*.json"
 			],
 			"url": "./translation.schema.json"
 		}
@@ -110,5 +110,6 @@
 	},
 	"i18nTag.src": "./src",
 	"i18nTag.schema": "./translation.schema.json",
-	"i18nTag.filter": "\\.jsx?"
+	"i18nTag.filter": "\\.jsx?",
+	"i18nTag.grouped": true
 }

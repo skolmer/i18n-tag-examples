@@ -1,14 +1,19 @@
 {
 	"type": "object",
 	"properties": {
-		"Loading...": {
+		"$schema": {
 			"type": "string"
 		},
-		"Time: ${0}": {
-			"type": "string"
-		},
-		"Date: ${0}": {
-			"type": "string"
+		"Clock.js": {
+			"type": "object",
+			"properties": {
+				"Date: ${0}": {
+					"type": "string"
+				},
+				"Time: ${0}": {
+					"type": "string"
+				}
+			}
 		}
 	},
 	"additionalProperties": false

@@ -20,7 +20,8 @@
     "globals": {
         "__DEV__": true,
         "i18n": true,
-        "i18nConfig": true
+        "i18nConfig": true,
+        "__translationGroup": true
     },
     "parser": "babel-eslint",
     "rules": {
@@ -46,20 +47,11 @@
             {
                 "ignoreStateless": true
             }
-        ],
-        "lodash/prefer-lodash-method": [
-            2,
-            {
-                "ignoreObjects": [
-                    "React.Children"
-                ]
-            }
         ]
     },
     "plugins": [
         "babel",
         "import",
-        "lodash",
         "react"
     ],
     "settings": {

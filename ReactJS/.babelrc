@@ -8,6 +8,7 @@
         [
             "i18n-tag-translate",
             {
+                "groupDir": "./src",
                 "globalImport": true // Adds import i18n, { i18nConfig } from "es2015-i18n-tag"; to the output
             }
         ]
