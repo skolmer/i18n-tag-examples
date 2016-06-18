@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+
 class Clock extends Component {
     constructor(props) {
         super(props)
@@ -18,17 +19,11 @@ class Clock extends Component {
     }
 
     render() {
-        /**
-         * This variable can be used to group your translations by filename e.g. "Clock.js"
-         * __translationGroup const will be injected by babel into each module and contains the filepath of the module relative to "groupDir" in ".babelrc"
-         * Translation groups are optional. If "groupDir" is not set __translationGroup will be undefined!
-         */
-        i18nConfig({ group: __translationGroup })
         return (
             <div>
-                <p>{ i18n`Date: ${this.state.date}:t(D)` }</p>
+                <p>{ i18n(__translationGroup)`Date: ${this.state.date}:t(D)` }</p>
                 <h1>
-                    { i18n`Time: ${this.state.date}:t(T)` }
+                    { i18n(__translationGroup)`Time: ${this.state.date}:t(T)` }
                 </h1>
             </div>
         )
