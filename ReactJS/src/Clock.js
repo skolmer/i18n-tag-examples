@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { i18nGroup } from 'es2015-i18n-tag'
 
-
+@i18nGroup(__translationGroup)
 class Clock extends Component {
     constructor(props) {
         super(props)
@@ -21,9 +22,9 @@ class Clock extends Component {
     render() {
         return (
             <div>
-                <p>{ i18n(__translationGroup)`Date: ${this.state.date}:t(D)` }</p>
+                <p>{ this.i18n`Date: ${this.state.date}:t(D)` }</p>
                 <h1>
-                    { i18n(__translationGroup)`Time: ${this.state.date}:t(T)` }
+                    { this.i18n`Time: ${this.state.date}:t(T)` }
                 </h1>
             </div>
         )

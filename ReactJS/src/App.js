@@ -1,7 +1,15 @@
 import React, { Component } from 'react'
 import 'whatwg-fetch'
 import Clock from './Clock'
+import { i18nGroup } from 'es2015-i18n-tag'
 
+/**
+ * __translationGroup: This variable can be used to group your translations by filename e.g. "Clock.js"
+ * __translationGroup const will be injected by babel into each module and contains the filepath of the module relative to "groupDir" in ".babelrc"
+ * Translation groups are optional. If "groupDir" is not set __translationGroup will be undefined!
+ * you can set the i18nConfig({"group": __translationGroup}) before constructing your template literal or use i18n(__translationGroup)`Loading...` instead of i18n`Loading...`
+ */
+@i18nGroup(__translationGroup)
 class App extends Component {
     constructor(props) {
         super(props)
@@ -25,20 +33,14 @@ class App extends Component {
         this.setState({ locale });
     }
 
-    render() {
-        /**
-         * __translationGroup: This variable can be used to group your translations by filename e.g. "Clock.js"
-         * __translationGroup const will be injected by babel into each module and contains the filepath of the module relative to "groupDir" in ".babelrc"
-         * Translation groups are optional. If "groupDir" is not set __translationGroup will be undefined!
-         * you can set the i18nConfig({"group": __translationGroup}) before constructing your template literal or use i18n(__translationGroup)`Loading...` instead of i18n`Loading...`
-         */
+    render() {        
         let selector = (__DEV__) ? (
             <div>
                 <select value={this.state.locale} onChange={this.handleChange}>
                     <option value="en-US">EN</option>
                     <option value="de-DE">DE</option>
                     <option value="es-ES">ES</option>
-                </select>{this.state.loading ? i18n(__translationGroup)`Loading...` : false}
+                </select>{this.state.loading ? this.i18n`Loading...` : false}
             </div>
         ) : null
 
