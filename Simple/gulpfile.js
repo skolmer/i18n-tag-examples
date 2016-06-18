@@ -19,8 +19,6 @@ gulp.task('generate-translation-schema', (cb) => {
 
 // Use i18n babel plugin to build a german release
 gulp.task('build-release-de', () => {  
-  const translations = path.resolve(__dirname, './translations/translation.de.json');
-
   browserify('./src/index.js', { debug: true }).transform('babelify', {
     'presets': [
       'es2015',
@@ -28,7 +26,7 @@ gulp.task('build-release-de', () => {
     ],
     'plugins': [
       ['i18n-tag-translate', {
-        'translation': translations
+        'translation': './translations/translation.de.json'
       }]
     ]
   }).bundle()
