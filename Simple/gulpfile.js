@@ -5,7 +5,6 @@ const connect = require('gulp-connect')
 const source = require('vinyl-source-stream')
 const buffer = require('vinyl-buffer')
 const browserify = require('browserify')
-const path = require('path')
 const runSequence = require('run-sequence')
 const i18nTagSchema = require('i18n-tag-schema').default
 
