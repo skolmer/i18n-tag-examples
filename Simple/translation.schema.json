@@ -1,9 +1,39 @@
 {
-	"type": "object",
-	"properties": {
-		"Hello ${0}": {
-			"type": "string"
+	"definitions": {
+		"translations": {
+			"type": "object",
+			"properties": {
+				"$schema": {
+					"type": "string"
+				},
+				"Hello ${0}": {
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
+		},
+		"group": {
+			"type": "object",
+			"properties": {
+				"$schema": {
+					"type": "string"
+				}
+			},
+			"patternProperties": {
+				"^([^/]+(/|\\.js))+$": {
+					"$ref": "#/definitions/translations"
+				}
+			},
+			"additionalProperties": false
 		}
 	},
-	"additionalProperties": false
+	"type": "object",
+	"oneOf": [
+		{
+			"$ref": "#/definitions/translations"
+		},
+		{
+			"$ref": "#/definitions/group"
+		}
+	]
 }
