@@ -3,13 +3,6 @@ import 'whatwg-fetch'
 import Clock from './Clock'
 import { i18nGroup } from 'es2015-i18n-tag'
 
-/**
- * __translationGroup: This variable can be used to group your translations by filename e.g. "Clock.js"
- * __translationGroup const will be injected by babel into each module and contains the filepath of the module relative to "groupDir" in ".babelrc"
- * Translation groups are optional. If "groupDir" is not set __translationGroup will be undefined!
- * you can set the i18nConfig({"group": __translationGroup}) before constructing your template literal or use i18n(__translationGroup)`Loading...` instead of i18n`Loading...`
- */
-@i18nGroup(__translationGroup)
 class App extends Component {
     constructor(props) {
         super(props)
@@ -53,4 +46,10 @@ class App extends Component {
     }
 }
 
-export default App
+/**
+ * __translationGroup: This variable can be used to group your translations by filename e.g. "Clock.js"
+ * __translationGroup const will be injected by babel into each module and contains the filepath of the module relative to "groupDir" in ".babelrc"
+ * Translation groups are optional. If "groupDir" is not set __translationGroup will be undefined!
+ * you can set the i18nConfig({"group": __translationGroup}) before constructing your template literal or use i18n(__translationGroup)`Loading...` instead of i18n`Loading...`
+ */
+export default i18nGroup(__translationGroup)(App)
