@@ -46,7 +46,7 @@
     "gulp": "^3.9.1",
     "gulp-connect": "^4.0.0",
     "gulp-sourcemaps": "^1.6.0",
-    "i18n-tag-schema": "^0.7.1",
+    "i18n-tag-schema": "^0.8.0",
     "rimraf": "^2.5.2",
     "run-sequence": "^1.2.1",
     "vinyl-buffer": "^1.0.0",
