@@ -4,6 +4,14 @@
 		"$schema": {
 			"type": "string"
 		},
+		"App.js": {
+			"type": "object",
+			"properties": {
+				"Loading...": {
+					"type": "string"
+				}
+			}
+		},
 		"Clock.js": {
 			"type": "object",
 			"properties": {
@@ -11,14 +19,6 @@
 					"type": "string"
 				},
 				"Time: ${0}": {
-					"type": "string"
-				}
-			}
-		},
-		"App.js": {
-			"type": "object",
-			"properties": {
-				"Loading...": {
 					"type": "string"
 				}
 			}

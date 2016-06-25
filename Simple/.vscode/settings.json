@@ -1,7 +1,6 @@
-// Place your settings in this file to overwrite default and user settings.
 {
 	"editor.formatOnType": true,
-	"eslint.enable": true,	
+	"eslint.enable": true,
 	"files.associations": {
 		".babelrc": "json"
 	},
@@ -17,11 +16,15 @@
 		"dist/": true
 	},
 	"json.schemas": [
-        {
-            "fileMatch": [
-                "/translations/*.json"
-            ],
-            "url": "./translation.schema.json"
-        }
-    ]
+		{
+			"fileMatch": [
+				"/translations/*.json"
+			],
+			"url": "./translation.schema.json"
+		}
+	],
+	"i18nTag.src": "./src",
+	"i18nTag.schema": "./translation.schema.json",
+	"i18nTag.filter": "\\.jsx?",
+	"i18nTag.grouped": false
 }

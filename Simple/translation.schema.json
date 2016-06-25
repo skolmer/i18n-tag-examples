@@ -20,7 +20,7 @@
 				}
 			},
 			"patternProperties": {
-				"^([^/]+(/|\\.js))+$": {
+				"^([^/]+(/|\\.jsx?))+$": {
 					"$ref": "#/definitions/translations"
 				}
 			},
