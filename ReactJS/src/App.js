@@ -33,7 +33,7 @@ class App extends Component {
                     <option value="en-US">EN</option>
                     <option value="de-DE">DE</option>
                     <option value="es-ES">ES</option>
-                </select>{this.state.loading ? this.i18n`Loading...` : false}
+                </select>{this.state.loading ? i18n('common')`Loading...` : false}
             </div>
         ) : null
 
