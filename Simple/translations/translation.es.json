@@ -1,0 +1,4 @@
+{
+    "$schema": "../translation.schema.json",
+    "Hello ${0}": "Hola ${0}"
+}

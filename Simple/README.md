@@ -6,3 +6,5 @@ This example demonstrates i18n template tag and tooling in a Simple jQuery/Gulp 
 * **default (bundle/webserver/watch)**: Can be used to test translations at runtime
 * **generate-translation-schema**: Generates a json [schema](translation.schema.json) for use in [translation.de.json](translations/translation.de.json)
 * **build-release-de**: Creates a release build with baked-in translations from [translation.de.json](translations/translation.de.json)
+* **validate-german-translation**: Validates the german translation file
+* **validate-translations**: Validates all translation files

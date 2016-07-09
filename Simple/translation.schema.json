@@ -1,39 +1,17 @@
 {
-	"definitions": {
-		"translations": {
-			"type": "object",
-			"properties": {
-				"$schema": {
-					"type": "string"
-				},
-				"Hello ${0}": {
-					"type": "string"
-				}
-			},
-			"additionalProperties": false
+	"type": "object",
+	"properties": {
+		"$schema": {
+			"type": "string"
 		},
-		"group": {
-			"type": "object",
-			"properties": {
-				"$schema": {
-					"type": "string"
-				}
-			},
-			"patternProperties": {
-				"^([^/]+(/|\\.jsx?))+$": {
-					"$ref": "#/definitions/translations"
-				}
-			},
-			"additionalProperties": false
+		"Hello ${0}": {
+			"type": "string",
+			"minLength": 1,
+			"pattern": "(?=.*?\\$\\{0\\})"
 		}
 	},
-	"type": "object",
-	"oneOf": [
-		{
-			"$ref": "#/definitions/translations"
-		},
-		{
-			"$ref": "#/definitions/group"
-		}
-	]
+	"required": [
+		"Hello ${0}"
+	],
+	"additionalProperties": false
 }
