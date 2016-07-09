@@ -8,21 +8,37 @@
 			"type": "object",
 			"properties": {
 				"Date: ${0}": {
-					"type": "string"
+					"type": "string",
+					"minLength": 1,
+					"pattern": "(?=.*?\\$\\{0\\})"
 				},
 				"Time: ${0}": {
-					"type": "string"
+					"type": "string",
+					"minLength": 1,
+					"pattern": "(?=.*?\\$\\{0\\})"
 				}
-			}
+			},
+			"required": [
+				"Date: ${0}",
+				"Time: ${0}"
+			]
 		},
 		"common": {
 			"type": "object",
 			"properties": {
 				"Loading...": {
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
-			}
+			},
+			"required": [
+				"Loading..."
+			]
 		}
 	},
+	"required": [
+		"Clock.js",
+		"common"
+	],
 	"additionalProperties": false
 }
