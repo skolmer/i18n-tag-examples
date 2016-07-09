@@ -1,6 +1,5 @@
 /* eslint no-console:0 */
 const gulp = require('gulp')
-const gutil = require('gulp-util');
 const sourcemaps = require('gulp-sourcemaps')
 const connect = require('gulp-connect')
 const source = require('vinyl-source-stream')
@@ -8,7 +7,7 @@ const buffer = require('vinyl-buffer')
 const browserify = require('browserify')
 const runSequence = require('run-sequence')
 const i18nTagSchema = require('i18n-tag-schema').default
-const vaidateSchema = require('i18n-tag-schema').vaidateSchema
+const validateSchema = require('i18n-tag-schema').validateSchema
 
 // use i18n-tag-schema to generate a JSON schema for your translations
 gulp.task('generate-translation-schema', (cb) => {
@@ -19,14 +18,14 @@ gulp.task('generate-translation-schema', (cb) => {
 })
 
 gulp.task('validate-german-translation', function (cb) {
-  vaidateSchema('./translations/translation.de.json', './translation.schema.json', (output, type) => {
+  validateSchema('./translations/translation.de.json', './translation.schema.json', (output, type) => {
       console.log(output)
       if(type === 'error' || type === 'success') cb(); // finished task
   })
 })
 
 gulp.task('validate-translations', function (cb) {
-  vaidateSchema('./translations', './translation.schema.json', (output, type) => {
+  validateSchema('./translations', './translation.schema.json', (output, type) => {
       console.log(output)
       if(type === 'error' || type === 'success') cb(); // finished task
   })
