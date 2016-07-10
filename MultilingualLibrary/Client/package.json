@@ -7,7 +7,10 @@
     "build:webpack": "cross-env NODE_ENV=production webpack --colors --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
     "start": "node devServer.js",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "generate-schema": "i18n-tag-schema ./src",
+    "validate-german-translation": "i18n-tag-schema ./translations/translation.de.json --validate --schema ./translation.schema.json",
+    "validate-translations": "i18n-tag-schema ./translations --validate --schema ./translation.schema.json"
   },
   "repository": {
     "type": "git",
@@ -52,12 +55,14 @@
     "eslint-plugin-react": "^5.1.1",
     "ghooks": "^1.2.1",
     "html-webpack-plugin": "^2.17.0",
+    "i18n-tag-schema": "^1.4.0",
     "react-hot-loader": "^3.0.0-beta.2",
     "rimraf": "^2.5.2",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "es2015-i18n-tag": "^1.1.0",
     "react": "^15.0.2",
     "react-dom": "^15.0.2"
   },

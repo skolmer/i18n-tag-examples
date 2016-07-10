@@ -4,28 +4,20 @@
 		"$schema": {
 			"type": "string"
 		},
-		"my-lib": {
-			"type": "object",
-			"properties": {
-				"Date: ${0}": {
-					"type": "string",
-					"minLength": 1,
-					"pattern": "(?=.*?\\$\\{0\\})"
-				},
-				"Time: ${0}": {
-					"type": "string",
-					"minLength": 1,
-					"pattern": "(?=.*?\\$\\{0\\})"
-				}
-			},
-			"required": [
-				"Date: ${0}",
-				"Time: ${0}"
-			]
+		"Date: ${0}": {
+			"type": "string",
+			"minLength": 1,
+			"pattern": "(?=.*?\\$\\{0\\})"
+		},
+		"Time: ${0}": {
+			"type": "string",
+			"minLength": 1,
+			"pattern": "(?=.*?\\$\\{0\\})"
 		}
 	},
 	"required": [
-		"my-lib"
+		"Date: ${0}",
+		"Time: ${0}"
 	],
 	"additionalProperties": false
 }

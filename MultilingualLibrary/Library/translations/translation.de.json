@@ -1,7 +1,5 @@
 {
     "$schema": "../translation.schema.json",
-    "my-lib": {
-        "Date: ${0}": "Datum: ${0}",
-        "Time: ${0}": "Zeit: ${0}"
-    }
+    "Date: ${0}": "Datum: ${0}",
+    "Time: ${0}": "Zeit: ${0}"
 }

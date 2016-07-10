@@ -1,0 +1,38 @@
+{
+	"type": "object",
+	"properties": {
+		"$schema": {
+			"type": "string"
+		},
+		"Date: ${0}": {
+			"type": "string",
+			"minLength": 1,
+			"pattern": "(?=.*?\\$\\{0\\})"
+		},
+		"Loading...": {
+			"type": "string",
+			"minLength": 1
+		},
+		"This clock is imported with german translations and should not change language": {
+			"type": "string",
+			"minLength": 1
+		},
+		"This clock uses application translations": {
+			"type": "string",
+			"minLength": 1
+		},
+		"Time: ${0}": {
+			"type": "string",
+			"minLength": 1,
+			"pattern": "(?=.*?\\$\\{0\\})"
+		}
+	},
+	"required": [
+		"Date: ${0}",
+		"Loading...",
+		"This clock is imported with german translations and should not change language",
+		"This clock uses application translations",
+		"Time: ${0}"
+	],
+	"additionalProperties": false
+}

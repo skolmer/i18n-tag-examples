@@ -77,7 +77,7 @@ module.exports =
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Clock = (_dec = i18nGroup('my-lib'), _dec(_class = function (_Component) {
+	var Clock = (_dec = i18nGroup('', 'my-lib'), _dec(_class = function (_Component) {
 	    _inherits(Clock, _Component);
 
 	    function Clock(props) {
@@ -150,35 +150,43 @@ module.exports =
 
 	        _classCallCheck(this, Tag);
 
-	        this.locales = undefined;
-	        this.translations = {};
-	        this.number = { currency: 'USD' };
-	        this.date = {};
-	        this.standardFormatters = {};
-	        this.string = {};
-	        this.group;
+	        this.defaultConfig = {
+	            locales: undefined,
+	            translations: {},
+	            number: {
+	                currency: 'USD'
+	            },
+	            date: {},
+	            string: {},
+	            standardFormatters: {}
+	        };
+
+	        this.configs = {
+	            '': this.defaultConfig
+	        };
+
 	        this._localizers = {
-	            s /*string*/: function s(v, format) {
+	            s /*string*/: function s(config, v, format) {
 	                var formatted = void 0;
-	                if (format && (formatted = _this._runCustomFormatters(typeString, format, v)) !== null) {
+	                if (format && (formatted = _this._runCustomFormatters(config, typeString, format, v)) !== null) {
 	                    return formatted;
 	                }
-	                return v.toLocaleString(_this.locales);
+	                return v.toLocaleString(config.locales);
 	            },
-	            n /*number*/: function n(v, format) {
+	            n /*number*/: function n(config, v, format) {
 	                if (format) {
 	                    var fractionalDigits = parseInt(format);
 	                    if (!isNaN(fractionalDigits)) {
-	                        return v.toLocaleString(_this.locales, Object.assign({}, _this.number, { style: numberStyleDecimal, minimumFractionDigits: fractionalDigits, maximumFractionDigits: fractionalDigits }));
+	                        return v.toLocaleString(config.locales, Object.assign({}, config.number, { style: numberStyleDecimal, minimumFractionDigits: fractionalDigits, maximumFractionDigits: fractionalDigits }));
 	                    }
 	                    var formatted = void 0;
-	                    if ((formatted = _this._runCustomFormatters(typeNumber, format, v)) !== null) {
+	                    if ((formatted = _this._runCustomFormatters(config, typeNumber, format, v)) !== null) {
 	                        return formatted;
 	                    }
 	                }
-	                v.toLocaleString(_this.locales, Object.assign({}, _this.number, { style: numberStyleDecimal }));
+	                v.toLocaleString(config.locales, Object.assign({}, config.number, { style: numberStyleDecimal }));
 	            },
-	            t /*date*/: function t(v, format) {
+	            t /*date*/: function t(config, v, format) {
 	                if (format) {
 	                    switch (format.toUpperCase()) {
 	                        case 'R':
@@ -188,19 +196,19 @@ module.exports =
 	                    }
 	                    var formatOptions = _this._getStandardFormatSettings(format);
 	                    if (formatOptions) {
-	                        return v.toLocaleString(_this.locales, Object.assign({}, _this.date, formatOptions));
+	                        return v.toLocaleString(config.locales, Object.assign({}, config.date, formatOptions));
 	                    } else {
-	                        var formatted = _this._runCustomFormatters(typeDate, format, v);
+	                        var formatted = _this._runCustomFormatters(config, typeDate, format, v);
 	                        if (formatted !== null) return formatted;
 	                    }
 	                }
-	                return v.toLocaleString(_this.locales, Object.assign({}, _this.date));
+	                return v.toLocaleString(config.locales, Object.assign({}, config.date));
 	            },
-	            c /*currency*/: function c(v, currency) {
-	                return v.toLocaleString(_this.locales, currency ? Object.assign({}, _this.number, { style: numberStyleCurrency, currency: currency }) : Object.assign({}, _this.number, { style: numberStyleCurrency }));
+	            c /*currency*/: function c(config, v, currency) {
+	                return v.toLocaleString(config.locales, currency ? Object.assign({}, config.number, { style: numberStyleCurrency, currency: currency }) : Object.assign({}, config.number, { style: numberStyleCurrency }));
 	            },
-	            p /*percent*/: function p(v) {
-	                return v.toLocaleString(_this.locales, Object.assign({}, _this.number, { style: numberStylePercent }));
+	            p /*percent*/: function p(config, v) {
+	                return v.toLocaleString(config.locales, Object.assign({}, config.number, { style: numberStylePercent }));
 	            }
 	        };
 	        this.i18n = this.i18n.bind(this);
@@ -218,57 +226,58 @@ module.exports =
 	            var date = _ref.date;
 	            var standardFormatters = _ref.standardFormatters;
 
-	            this.locales = locales || this.locales;
-	            this.translations = translations || this.translations;
-	            this.number = number || this.number;
-	            this.date = date || this.date;
-	            this.standardFormatters = standardFormatters || this.standardFormatters;
-	            this.group = group || this.group;
+	            var currentConfig = this.configs[group || ''] || this.defaultConfig;
+	            this.configs[group || ''] = Object.assign({}, currentConfig, {
+	                locales: locales || currentConfig.locales,
+	                translations: translations || currentConfig.translations,
+	                number: number || currentConfig.number,
+	                date: date || currentConfig.date,
+	                standardFormatters: standardFormatters || currentConfig.standardFormatters
+	            });
 	        }
 	    }, {
 	        key: 'i18n',
-	        value: function i18n(group, literals) {
+	        value: function i18n(group, config, literals) {
 	            var _this2 = this;
 
 	            var translationKey = this._buildKey(literals);
+	            var configGroup = this.configs[config || ''] || this.configs[''];
+	            var translations = configGroup['translations'];
 	            var translationString = void 0;
-	            var translationGroup = this.group;
+	            var translationGroup = void 0;
 	            if ((typeof group === 'undefined' ? 'undefined' : _typeof(group)) === typeString) {
 	                translationGroup = group;
 	            }
 	            if (translationGroup) {
-	                translationString = this.translations[translationGroup];
+	                translationString = translations[translationGroup];
 	                if (translationString instanceof Object) {
 	                    translationString = translationString[translationKey];
 	                }
 	            }
-	            if (!translationString) translationString = this.translations[translationKey] || translationKey;
+	            if (!translationString) translationString = translations[translationKey] || translationKey;
 	            var typeInfoForValues = literals.slice(1).map(this._extractTypeInfo);
 
-	            for (var _len = arguments.length, values = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-	                values[_key - 2] = arguments[_key];
+	            for (var _len = arguments.length, values = Array(_len > 3 ? _len - 3 : 0), _key = 3; _key < _len; _key++) {
+	                values[_key - 3] = arguments[_key];
 	            }
 
 	            var localizedValues = values.map(function (v, i) {
-	                return _this2._localize(v, typeInfoForValues[i]);
+	                return _this2._localize(configGroup, v, typeInfoForValues[i]);
 	            });
 	            return this._buildMessage.apply(this, [translationString].concat(_toConsumableArray(localizedValues)));
 	        }
 	    }, {
 	        key: '_runCustomFormatters',
-	        value: function _runCustomFormatters(type, format, value) {
-	            var _this3 = this;
-
+	        value: function _runCustomFormatters(config, type, format, value) {
 	            var formatted = null;
-	            if (this.standardFormatters && this.standardFormatters[type]) {
-	                Object.keys(this.standardFormatters[type]).forEach(function (val) {
-	                    if (val === format) {
-	                        var formatter = _this3.standardFormatters[type][val];
-	                        if (formatter) {
-	                            formatted = formatter(_this3.locales, _this3[type], value);
-	                        }
+	            if (config.standardFormatters) {
+	                var formatters = config.standardFormatters[type];
+	                if (formatters) {
+	                    var formatter = formatters[format];
+	                    if (formatter) {
+	                        formatted = formatter(config.locales, config[type], value);
 	                    }
-	                });
+	                }
 	            }
 	            return formatted;
 	        }
@@ -414,13 +423,13 @@ module.exports =
 	        }
 	    }, {
 	        key: '_localize',
-	        value: function _localize(value, _ref2) {
+	        value: function _localize(config, value, _ref2) {
 	            var type = _ref2.type;
 	            var options = _ref2.options;
 
 	            var localizer = this._localizers[type];
 	            if (localizer) {
-	                return localizer(value, options);
+	                return localizer(config, value, options);
 	            }
 	            throw new Error('Type \'' + type + '\' is not supported. Supported types are: ' + Object.keys(this._localizers).join());
 	        }
@@ -468,29 +477,39 @@ module.exports =
 	        values[_key3 - 1] = arguments[_key3];
 	    }
 
-	    if ((typeof literals === 'undefined' ? 'undefined' : _typeof(literals)) === typeString) {
-	        return function (lit) {
-	            for (var _len4 = arguments.length, val = Array(_len4 > 1 ? _len4 - 1 : 0), _key4 = 1; _key4 < _len4; _key4++) {
-	                val[_key4 - 1] = arguments[_key4];
-	            }
+	    if (typeof literals === 'string') {
+	        if (values.length && typeof values[0] === 'string') {
+	            return function (lit) {
+	                for (var _len4 = arguments.length, val = Array(_len4 > 1 ? _len4 - 1 : 0), _key4 = 1; _key4 < _len4; _key4++) {
+	                    val[_key4 - 1] = arguments[_key4];
+	                }
 
-	            return i18ntag.i18n.apply(i18ntag, [literals, lit].concat(val));
-	        };
+	                return i18ntag.i18n.apply(i18ntag, [literals, values[0], lit].concat(val));
+	            };
+	        } else {
+	            return function (lit) {
+	                for (var _len5 = arguments.length, val = Array(_len5 > 1 ? _len5 - 1 : 0), _key5 = 1; _key5 < _len5; _key5++) {
+	                    val[_key5 - 1] = arguments[_key5];
+	                }
+
+	                return i18ntag.i18n.apply(i18ntag, [literals, null, lit].concat(val));
+	            };
+	        }
 	    } else {
-	        return i18ntag.i18n.apply(i18ntag, [null, literals].concat(values));
+	        return i18ntag.i18n.apply(i18ntag, [null, null, literals].concat(values));
 	    }
 	};
 
-	var i18nGroup = function i18nGroup(group) {
+	var i18nGroup = function i18nGroup(group, config) {
 	    return function (Target) {
 	        return function (props) {
 	            Target = new Target(props);
 	            Target.i18n = function (literals) {
-	                for (var _len5 = arguments.length, values = Array(_len5 > 1 ? _len5 - 1 : 0), _key5 = 1; _key5 < _len5; _key5++) {
-	                    values[_key5 - 1] = arguments[_key5];
+	                for (var _len6 = arguments.length, values = Array(_len6 > 1 ? _len6 - 1 : 0), _key6 = 1; _key6 < _len6; _key6++) {
+	                    values[_key6 - 1] = arguments[_key6];
 	                }
 
-	                return i18n(group).apply(undefined, [literals].concat(values));
+	                return i18n(group, config).apply(undefined, [literals].concat(values));
 	            };
 	            return Target;
 	        };

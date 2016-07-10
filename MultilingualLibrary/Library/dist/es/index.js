@@ -55,6 +55,7 @@ module.exports =
 
 	i18nConfig({
 	    locales: 'es-ES',
+	    group: 'my-lib',
 	    number: {
 	        currency: 'EUR'
 	    },
@@ -69,10 +70,8 @@ module.exports =
 
 	module.exports = {
 		"$schema": "../translation.schema.json",
-		"my-lib": {
-			"Date: ${0}": "Fecha: ${0}",
-			"Time: ${0}": "Hora: ${0}"
-		}
+		"Date: ${0}": "Fecha: ${0}",
+		"Time: ${0}": "Hora: ${0}"
 	};
 
 /***/ }

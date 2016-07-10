@@ -1,7 +1,7 @@
 import 'es2015-i18n-tag'
 import React, { Component } from 'react'
 
-@i18nGroup('my-lib')
+@i18nGroup('', 'my-lib')
 export default class Clock extends Component {
     constructor(props) {
         super(props)

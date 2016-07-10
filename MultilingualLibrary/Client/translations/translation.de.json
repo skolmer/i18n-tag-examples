@@ -1,0 +1,8 @@
+{
+    "$schema": "../translation.schema.json",
+    "Date: ${0}": "Datum ${0}",
+    "Time: ${0}": "Zeit: ${0}",
+    "Loading...": "lade...",
+    "This clock is imported with spain translations and should not change language": "Diese Uhr wurde mit spanischer Sprache importiert und sollte sich bei Sprachauswahl nicht ändern",
+    "This clock uses application translations": "Diese Uhr nutzt die Übersetzungen der Anwendung"
+}
