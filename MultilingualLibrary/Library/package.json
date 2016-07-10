@@ -1,0 +1,60 @@
+{
+  "name": "i18n-tag-examples-multilingual-library",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "prepublish": "npm run validate-translations && npm run lint && npm run clean && npm run build",
+    "clean": "rimraf dist/lib/**/*",
+    "build": "cross-env NODE_ENV=production webpack --colors --config webpack.config.js",
+    "lint": "eslint lib/**",
+    "generate-schema": "i18n-tag-schema ./lib",
+    "validate-german-translation": "i18n-tag-schema ./translations/translation.de.json --validate --schema ./translation.schema.json",
+    "validate-translations": "i18n-tag-schema ./translations --validate --schema ./translation.schema.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skolmer/i18n-tag-examples.git"
+  },
+  "keywords": [
+    "i18n",
+    "i18n-tag",
+    "i18n-tag-schema",
+    "es2015",
+    "react",
+    "reactjs",
+    "webpack",
+    "babel"
+  ],
+  "author": "Steffen Kolmer <steffen@kolmer.net> (http://github.com/skolmer)",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/skolmer/i18n-tag-examples/issues"
+  },
+  "homepage": "https://github.com/skolmer/i18n-tag-examples",
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-i18n-tag-translate": "^1.0.0",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-react-optimize": "^1.0.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "cross-env": "^1.0.7",
+    "eslint": "^2.10.1",
+    "eslint-import-resolver-webpack": "^0.2.4",
+    "eslint-plugin-babel": "^3.2.0",
+    "eslint-plugin-react": "^5.1.1",
+    "ghooks": "^1.2.1",
+    "i18n-tag-schema": "^1.4.0",
+    "rimraf": "^2.5.2",
+    "webpack": "^1.13.0",
+    "json-loader": "^0.5.4"
+  },
+  "dependencies": {
+    "es2015-i18n-tag": "^1.0.0",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2"
+  }
+}
