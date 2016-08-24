@@ -11,7 +11,7 @@ const validateSchema = require('i18n-tag-schema').validateSchema
 
 // use i18n-tag-schema to generate a JSON schema for your translations
 gulp.task('generate-translation-schema', (cb) => {
-  i18nTagSchema('./src', '\\.js$', './translation.schema.json', false, (output, type) => {
+  i18nTagSchema('./src', '\\.js$', './translation.schema.json', (output, type) => {
     console.log(output)
     if(type === 'success' || type === 'error') cb()
   })
