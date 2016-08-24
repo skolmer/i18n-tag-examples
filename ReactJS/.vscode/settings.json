@@ -110,6 +110,5 @@
 	},
 	"i18nTag.src": "./src",
 	"i18nTag.schema": "./translation.schema.json",
-	"i18nTag.filter": "\\.jsx?",
-	"i18nTag.grouped": true
+	"i18nTag.filter": "\\.jsx?"
 }
