@@ -9,6 +9,7 @@
     "start": "node devServer.js",
     "lint": "eslint src",
     "generate-schema": "i18n-tag-schema ./src",
+    "export-translation-keys": "i18n-tag-schema ./src -e .",
     "validate-german-translation": "i18n-tag-schema ./translations/translation.de.json --validate --schema ./translation.schema.json",
     "validate-translations": "i18n-tag-schema ./translations --validate --schema ./translation.schema.json"
   },
