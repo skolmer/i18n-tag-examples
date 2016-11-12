@@ -6,33 +6,41 @@ const source = require('vinyl-source-stream')
 const buffer = require('vinyl-buffer')
 const browserify = require('browserify')
 const runSequence = require('run-sequence')
-const i18nTagSchema = require('i18n-tag-schema').default
-const validateSchema = require('i18n-tag-schema').validateSchema
+const generateTranslationSchema = require('i18n-tag-schema').generateTranslationSchema
+const validateTranslations = require('i18n-tag-schema').validateTranslations
 
 // use i18n-tag-schema to generate a JSON schema for your translations
-gulp.task('generate-translation-schema', (cb) => {
-  i18nTagSchema('./src', '\\.js$', './translation.schema.json', (output, type) => {
-    console.log(output)
-    if(type === 'success' || type === 'error') cb()
+gulp.task('generate-translation-schema', function (cb) {
+  generateTranslationSchema({ rootPath: './src', schemaPath: './translation.schema.json' }).then(() => {
+    cb(); // finished task
+  }).catch((err) => {
+    console.error(err.message)
+    cb(err.message); // task failed
   })
 })
 
 gulp.task('validate-german-translation', function (cb) {
-  validateSchema('./translations/translation.de.json', './translation.schema.json', (output, type) => {
-      console.log(output)
-      if(type === 'error' || type === 'success') cb(); // finished task
+  validateTranslations({ rootPath: './translations/translation.de.json', schemaPath: './translation.schema.json' }).then((result) => {
+    console.log(result)
+    cb(); // finished task
+  }).catch((err) => {
+    console.error(err.message)
+    cb(err.message); // task failed
   })
 })
 
 gulp.task('validate-translations', function (cb) {
-  validateSchema('./translations', './translation.schema.json', (output, type) => {
-      console.log(output)
-      if(type === 'error' || type === 'success') cb(); // finished task
+  validateTranslations({ rootPath: './translations', schemaPath: './translation.schema.json' }).then((result) => {
+    console.log(result)
+    cb(); // finished task
+  }).catch((err) => {
+    console.error(err.message)
+    cb(err.message); // task failed
   })
 })
 
 // Use i18n babel plugin to build a german release
-gulp.task('build-release-de', () => {  
+gulp.task('build-release-de', () => {
   browserify('./src/index.js', { debug: true }).transform('babelify', {
     'presets': [
       'es2015',
