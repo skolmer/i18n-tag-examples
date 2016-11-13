@@ -47,7 +47,7 @@
     "eslint-plugin-babel": "^3.2.0",
     "eslint-plugin-react": "^5.1.1",
     "ghooks": "^1.2.1",
-    "i18n-tag-schema": "^2.1.0",
+    "i18n-tag-schema": "^2.1.4",
     "rimraf": "^2.5.2",
     "webpack": "^1.13.0",
     "json-loader": "^0.5.4"
